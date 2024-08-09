@@ -1,10 +1,22 @@
 package com.springboot.backend.ignacio.useresapp.users_backend.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import static jakarta.persistence.GenerationType.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.annotations.ManyToAny;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -37,7 +49,21 @@ public class User {
     @NotBlank
     @Size(min = 4, max = 12)
     private String password;
-    
+
+    @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
+    @ManyToAny(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "users_roles",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "rol_id"),
+        uniqueConstraints = { @UniqueConstraint(columnNames = { "user_id", "rol_id" })}
+    )
+
+    private List<Role> roles;
+
+    public User() {
+        this.roles = new ArrayList<>();
+    }
     public Long getId() {
         return id;
     }
@@ -73,6 +99,12 @@ public class User {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    public List<Role> getRoles() {
+        return roles;
+    }
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
     
 }
