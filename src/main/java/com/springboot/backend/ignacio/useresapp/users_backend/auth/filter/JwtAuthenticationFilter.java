@@ -13,10 +13,12 @@ import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springboot.backend.ignacio.useresapp.users_backend.entities.User;
 
+import io.jsonwebtoken.Jwts;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import static com.springboot.backend.ignacio.useresapp.users_backend.auth.TokenJwtConfig.*;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter{
 
@@ -55,6 +57,16 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
             Authentication authResult) throws IOException, ServletException {
+
+                org.springframework.security.core.userdetails.User  user = (org.springframework.security.core.userdetails.User) authResult.getPrincipal();
+                String username = user.getUsername();
+
+
+
+                String jwt = Jwts.builder()
+                    .subject(username)
+                    .signWith(SECRET_KEY)
+                    .compact();
     }
 
 
