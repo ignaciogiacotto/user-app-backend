@@ -1,4 +1,4 @@
-package com.springboot.backend.ignacio.useresapp.users_backend.entities;
+package com.springboot.backend.ignacio.usersapp.users_backend.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -50,13 +50,13 @@ public class User {
     @Size(min = 4, max = 12)
     private String password;
 
-    @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
+    @JsonIgnoreProperties( {"handler", "hibernateLazyInitializer"} )
     @ManyToAny(fetch = FetchType.LAZY)
     @JoinTable(
         name = "users_roles",
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "rol_id"),
-        uniqueConstraints = { @UniqueConstraint(columnNames = { "user_id", "rol_id" })}
+        uniqueConstraints = { @UniqueConstraint(columnNames = {"user_id", "rol_id"} ) }
     )
 
     private List<Role> roles;

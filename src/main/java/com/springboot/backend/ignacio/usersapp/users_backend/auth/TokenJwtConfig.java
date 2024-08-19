@@ -1,4 +1,4 @@
-package com.springboot.backend.ignacio.useresapp.users_backend.auth;
+package com.springboot.backend.ignacio.usersapp.users_backend.auth;
 
 import javax.crypto.SecretKey;
 

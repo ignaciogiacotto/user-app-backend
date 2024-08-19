@@ -1,4 +1,4 @@
-package com.springboot.backend.ignacio.useresapp.users_backend;
+package com.springboot.backend.ignacio.usersapp.users_backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

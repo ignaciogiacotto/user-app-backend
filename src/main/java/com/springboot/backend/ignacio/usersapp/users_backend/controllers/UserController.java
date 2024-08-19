@@ -1,4 +1,4 @@
-package com.springboot.backend.ignacio.useresapp.users_backend.controllers;
+package com.springboot.backend.ignacio.usersapp.users_backend.controllers;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springboot.backend.ignacio.useresapp.users_backend.entities.User;
-import com.springboot.backend.ignacio.useresapp.users_backend.services.UserService;
+import com.springboot.backend.ignacio.usersapp.users_backend.entities.User;
+import com.springboot.backend.ignacio.usersapp.users_backend.services.UserService;
 
 import jakarta.validation.Valid;
 

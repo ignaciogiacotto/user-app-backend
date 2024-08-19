@@ -1,4 +1,4 @@
-package com.springboot.backend.ignacio.useresapp.users_backend.entities;
+package com.springboot.backend.ignacio.usersapp.users_backend.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
