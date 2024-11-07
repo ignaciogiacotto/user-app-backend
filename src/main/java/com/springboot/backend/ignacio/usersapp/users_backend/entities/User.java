@@ -1,5 +1,6 @@
 package com.springboot.backend.ignacio.usersapp.users_backend.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -43,10 +44,12 @@ public class User implements IUser{
     
     @NotEmpty
     @Email
+    @Column (unique = true)
     private String email;
 
     @NotBlank
     @Size(min = 4, max = 12)
+    @Column (unique = true)
     private String username;
 
     @Transient
