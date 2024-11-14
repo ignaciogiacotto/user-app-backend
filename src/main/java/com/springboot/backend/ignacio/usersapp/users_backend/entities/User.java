@@ -53,7 +53,7 @@ public class User implements IUser{
     private String username;
 
     @Transient
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private boolean admin;
 
     @NotBlank
